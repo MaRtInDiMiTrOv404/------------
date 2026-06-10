@@ -209,8 +209,9 @@ document.addEventListener('DOMContentLoaded', function () {
   function initTheme(){
     const saved = localStorage.getItem('makisoft-theme');
     if (saved) { applyTheme(saved); return; }
-    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-    applyTheme(prefersLight ? 'light' : 'dark');
+    // По подразбиране задаваме тъмен режим (без да се съобразяваме със system preference).
+    // Ако предпочитате да използваме system preference, върнете предишната логика.
+    applyTheme('dark');
   }
 
   if (themeToggle){
